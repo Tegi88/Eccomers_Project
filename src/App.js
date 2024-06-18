@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
+import { Route, BrowserRouter, Routes } from 'react-router-dom' 
 import './App.css';
+import NavBar from './Componnets/NavBar';
+import ListProducts from './Componnets/ListProducts';
+import Cart from './Componnets/Cart';
+import GlobalContext from './Componnets/Context/GlobalContext';
+import Category from './Componnets/Category';
+
 
 function App() {
+   const [products,setProducts]=useState([]);
+   const [itemsIncart,setitemsIncart]=useState([]);
+   const [itemsInFav,setitemsInFav]=useState([]);
+
+   function productIncart(id){
+    setitemsIncart([...itemsIncart,id])
+   }
+   function productInFav(id){
+    setitemsInFav([...itemsInFav,id])
+   }
+
+   const deletItemInCart=(id)=>{
+    const temp = itemsIncart.filter((item)=>item !== id);
+    setitemsIncart([...temp])
+   }
+
+
+  useEffect(()=>{
+    fetch('https://dummyjson.com/products?limit=200')
+            .then(res=>res.json())
+            .then(json=>setProducts(json.products))
+  },[])
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <NavBar/>
+       
+      <GlobalContext.Provider value={{products,productIncart,productInFav,itemsIncart,deletItemInCart,category:"mens-watches"}}>
+      <Routes>
+      <Route path="/" element={<ListProducts/>} />
+      <Route  path="/men" element={<Category />}/>
+      <Route path="/cart" element={<Cart />} />
+      </Routes> 
+      </GlobalContext.Provider>
+      </BrowserRouter>
     </div>
   );
 }

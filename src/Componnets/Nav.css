@@ -1,0 +1,48 @@
+
+.navbar{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: aquamarine;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-menu ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:100px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.login-btn{
+    width: 90px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: rgb(8, 106, 106);
+}
+
+.login-btn:hover{
+    background-color: rgb(6, 77, 77);
+}
+
+.cart-icon , .favorit-icon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+Link{
+    text-decoration: none;
+}

@@ -1,0 +1,30 @@
+
+.continer{
+    margin-top: 110px;
+    max-width: 80%;
+    padding-left: 10%;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:10px;
+   
+}
+.product{
+    border: 1px solid black;
+    max-width: 30%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+    display: flex;
+    gap: 5px;
+}
+
